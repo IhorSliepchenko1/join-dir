@@ -35,7 +35,9 @@ const dataFilesDir = async () => {
       const fileData = data.split(`\n`);
 
       const result = fileData.map((file) => {
-        return file + `;${internalFolder};${fileTxt}\n`;
+        if (file.length > 0) {
+          return file + `;${internalFolder};${fileTxt}\n`;
+        }
       });
 
       await MainFunctions.appendFileData(sharedFolder, result.join(``));
